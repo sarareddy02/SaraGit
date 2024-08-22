@@ -14,7 +14,7 @@ echo
 	case $choices in
 a) date;;
 b) ls -l;;
-c) cat /etc/passwd | more;;
+c) touch file.txt;;
 d) uptime;;
 f) echo invalid choices
 		esac 
