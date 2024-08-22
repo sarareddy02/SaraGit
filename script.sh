@@ -16,5 +16,6 @@ a) date;;
 b) ls -l;;
 c) touch shelly.txt;;
 d) uptime;;
+e) echo "Hello World";;
 f) echo invalid choices
 		esac 
