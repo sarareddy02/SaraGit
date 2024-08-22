@@ -14,7 +14,7 @@ echo
 	case $choices in
 a) date;;
 b) ls -l;;
-c) touch file.txt;;
+c) touch ram.txt;;
 d) uptime;;
 f) echo invalid choices
 		esac 
