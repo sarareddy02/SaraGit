@@ -14,7 +14,7 @@ echo
 	case $choices in
 a) date;;
 b) ls -l;;
-c) touch shelly.txt;;
+c) touch bangaru.txt;;
 d) uptime;;
 e) echo "Hello World";;
 f) echo invalid choices
