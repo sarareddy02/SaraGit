@@ -12,7 +12,6 @@ pipeline {
         stage('execute') {
             steps {
                 echo 'Testing...'
-                // This command will fail if 'test2.txt' does not exist
             }
         }
        
