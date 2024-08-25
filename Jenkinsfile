@@ -13,7 +13,6 @@ pipeline {
             steps {
                 echo 'Testing...'
                 // This command will fail if 'test2.txt' does not exist
-                sh 'cat test2.txt'
             }
         }
        
