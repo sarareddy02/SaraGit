@@ -12,7 +12,6 @@ pipeline {
         stage('execute') {
             steps {
                 echo 'Testing...'
-                // This command will fail because 'exit 1' returns a non-zero exit code
                 sh './script.sh'
             }
         }
