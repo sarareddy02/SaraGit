@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+   
     stages {
         stage('permission') {
             steps {
@@ -8,14 +8,15 @@ pipeline {
                 sh 'chmod +x ./script.sh'
             }
         }
-        
+       
         stage('execute') {
             steps {
                 echo 'Testing...'
-                sh './script.sh'
+                // This command will fail if 'test2.txt' does not exist
+                sh 'cat test2.txt'
             }
         }
-        
+       
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
@@ -23,16 +24,34 @@ pipeline {
             }
         }
     }
-    
+   
     post {
-        always {
-            echo 'This will always run, even if the pipeline fails.'
-        }
+       
+       
         success {
             echo 'This will run only if the pipeline succeeds.'
         }
+       
         failure {
             echo 'This will run only if the pipeline fails.'
         }
+
+        always {
+            emailext (
+                subject: "Pipeline status: ${BUILD_NUMBER}",
+                body: '''<html>
+                            <body>
+                                <p>Build Status: ${BUILD_STATUS}</p>
+                                <p>Build Number: ${BUILD_NUMBER}</p>
+                                <p>Check the <a href="${BUILD_URL}">console output</a></p>
+                            </body>
+                        </html>''',
+                to: 'sarareddy02@gmail.com',
+                from: 'sarareddy02@gmail.com',
+                replyTo: 'govardhang@gmail.com',
+                mimeType: 'text/html'
+            )
+        }
     }
 }
+
