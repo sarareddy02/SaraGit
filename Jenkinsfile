@@ -12,6 +12,7 @@ pipeline {
         stage('execute') {
             steps {
                 echo 'Testing...'
+               
             }
         }
        
@@ -35,14 +36,13 @@ pipeline {
         }
 
         always {
-            emailext (
-                subject: 'Pipeline status is good',
-                body: 'Pipeline is successfully executed',
-                to: 'sarareddy02@gmail.com',
-                from: 'sarareddy02@gmail.com',
-                replyTo: 'govardhang@gmail.com',
-                mimeType: 'text/html'
-            )
+            emailext body: '''<html>
+                            <body>
+                                <p>Build Status: ${BUILD_STATUS}</p>
+                                <p>Build Number: ${BUILD_NUMBER}</p>
+                                <p>Check the <a href="${BUILD_URL}">console output</a></p>
+                            </body>
+                        </html>''', subject: 'test email configuration', to: 'sarareddy02@gmail.com'
         }
     }
 }
